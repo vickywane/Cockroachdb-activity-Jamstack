@@ -1,0 +1,112 @@
+/* ACTIVITIES STYLING */
+.title {
+  font-weight: normal;
+  font-size: 1.4rem;
+}
+
+.input-element {
+  height: 45px;
+  width: 98%;
+  border-radius: 5px;
+  padding: 0 1rem;
+  border: 1px solid #c0c0c0;
+}
+
+.activity-header {
+  width: 100%;
+  background: #6933ff;
+  color: #fff;
+  height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 1.4rem;
+}
+
+.title-sm {
+  font-size: 1.2rem;
+}
+
+.cards-list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  row-gap: 50px;
+}
+
+.activity-type {
+  width: 7rem;
+  height: 45px;
+  list-style: none;
+  padding: 0.5rem 1rem;
+  border: 1px solid #c0c0c0;
+  text-align: center;
+  border-radius: 50px;
+  transition: all 300ms;
+}
+
+.delete-btn {
+  background: transparent;
+  border: 1px solid red;
+  border-radius: 5px;
+  height: 42px;
+  font-size: .9rem;
+  padding: .5rem 2rem;
+  transition: all 300ms;
+}
+
+.delete-btn:hover {
+  color: #fff;
+  cursor: pointer;
+  background: red;
+}
+
+.activity-type:hover {
+  cursor: pointer;
+  background: #6933ff;
+  border: 0;
+  color: #fff;
+}
+
+.type-list {
+  display: grid;
+  place-content: center;
+  grid-gap: 0.5rem 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+}
+
+.card {
+  border: 0;
+  box-shadow: 0 2px 3px #c0c0c0;
+  padding: 0.5rem 1rem;
+  border-radius: 7px;
+}
+
+label {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.activities-items {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.activities {
+  background: #ebf4fd;
+  height: 100%;
+}
+
+.align-center {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.flex {
+  display: flex;
+}
