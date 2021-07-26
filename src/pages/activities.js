@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../App.css";
 
 const data = [
@@ -27,6 +27,35 @@ const data = [
 const activities = ["Hiking", "Skating", "Swimming", "Soccer"];
 
 const Activities = () => {
+  const [activitiesData, setActivitiesData] = useState([]);
+  const [isFetchingActivities, setIsFetchingActivities] = useState(true);
+
+  useEffect(() => {
+    fetchActivities();
+
+    return () => fetchActivities();
+  }, []);
+
+  const fetchActivities = async () => {
+    try {
+      const body = await fetch(
+        `${process.env.REACT_APP_FUNCTION_ENDPOINT}/activities`,
+        {
+          method: "GET",
+          headers: {},
+        }
+      );
+
+      const { data } = await body.json();
+
+      setActivitiesData(data);
+    } catch (e) {
+      console.log("error fetching data", e);
+    } finally {
+      setIsFetchingActivities(false);
+    }
+  };
+
   const [selectedActivity, selectActivity] = useState(null);
   const [description, setDescription] = useState("");
   const [distance, setDistance] = useState("");
@@ -123,12 +152,12 @@ const Activities = () => {
         <hr />
 
         <ul className={"cards-list"}>
-          {data.map(
+          {activitiesData.map(
             ({
-              activityType,
+              activity_type,
               duration,
               distance,
-              dateCreated,
+              date_created,
               name,
               id,
               description,
@@ -152,12 +181,12 @@ const Activities = () => {
                             }}
                             class="bi bi-calendar-date"
                           ></i>
-                          <p> {dateCreated.toString()} </p>
+                          <p> {date_created.toString()} </p>
                         </div>
                       </div>
 
                       <div className="activity-type">
-                        <p> {activityType} </p>
+                        <p> {activity_type} </p>
                       </div>
                     </div>
 

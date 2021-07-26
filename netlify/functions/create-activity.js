@@ -5,10 +5,10 @@ const { v4 } = require("uuid");
 
 const client = new Client({
   user: process.env.USERNAME,
-  host: process.env.HOST,
+  host: process.env.DB_HOST,
   database: process.env.DATABASE,
   password: process.env.PASSWORD,
-  port: process.env.PORT,
+  port: process.env.DB_PORT,
   ssl: {
     rejectUnauthorized: false,
   },

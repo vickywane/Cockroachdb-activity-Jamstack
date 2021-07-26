@@ -2,10 +2,10 @@ const { Client } = require("pg");
 const format = require("pg-format");
 
 const client = new Client({
-  host: process.env.HOST,
+  host: process.env.DB_HOST,
   database: process.env.DATABASE,
   password: process.env.PASSWORD,
-  port: process.env.PORT,
+  port: process.env.DB_PORT,
   user: process.env.USERNAME,
   ssl: {
     rejectUnauthorized: false,
