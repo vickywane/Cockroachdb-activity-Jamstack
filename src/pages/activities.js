@@ -21,6 +21,7 @@ const Activities = () => {
      const body = await fetch(
        `http://localhost:5050/.netlify/functions/activities?order=${sortMode}`
      );
+
      const { data } = await body.json();
 
      setActivitiesData(data);

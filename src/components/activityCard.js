@@ -24,8 +24,7 @@ const ActivityCard = ({
                 <div className="icon-ctn" >
                     <FiCalendar size={19} />
                 </div>
-                {/* <p>{new Date(date_created).format('dddd-yy-mm')}</p> */}
-                <p>Friday 20th</p>
+                <p>{new Date(date_created).toDateString()}</p>
             </div>
 
             <hr />
