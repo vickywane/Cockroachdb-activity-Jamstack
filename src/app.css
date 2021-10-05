@@ -4,6 +4,10 @@
   font-size: 1.4rem;
 }
 
+.icon-ctn {
+  padding: 0 .2rem;
+}
+
 .input-element {
   height: 45px;
   width: 98%;
@@ -28,6 +32,7 @@
 
 .title-sm {
   font-size: 1.2rem;
+  text-transform: capitalize;
 }
 
 .cards-list {
@@ -49,9 +54,10 @@
   transition: all 300ms;
 }
 
-.delete-btn {
-  background: transparent;
-  border: 1px solid red;
+.activity-btn {
+  background: #6933ff;
+  color: #fff;
+  border: 1px solid #6933ff;
   border-radius: 5px;
   height: 42px;
   font-size: .9rem;
@@ -59,18 +65,13 @@
   transition: all 300ms;
 }
 
-.delete-btn:hover {
-  color: #fff;
+.activity-btn:hover {
+  color: #6933ff;
   cursor: pointer;
-  background: red;
+  background: transparent;
 }
 
-.activity-type:hover {
-  cursor: pointer;
-  background: #6933ff;
-  border: 0;
-  color: #fff;
-}
+/* CREATE ACTIVITY PAGE STYLING */
 
 .type-list {
   display: grid;
@@ -79,11 +80,19 @@
   grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
 }
 
+/* ACTIVITY CARD STYLING */
 .card {
   border: 0;
   box-shadow: 0 2px 3px #c0c0c0;
   padding: 0.5rem 1rem;
   border-radius: 7px;
+}
+
+.activity-type:hover {
+  cursor: pointer;
+  background: #6933ff;
+  border: 0;
+  color: #fff;
 }
 
 label {
@@ -110,3 +119,4 @@ label {
 .flex {
   display: flex;
 }
+

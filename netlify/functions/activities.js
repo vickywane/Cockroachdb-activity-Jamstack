@@ -1,14 +1,24 @@
 const { Client } = require("pg");
 const format = require("pg-format");
+const fs = require("fs");
+// const f = require('./cert')
+
+// const cert = fs.readFileSync('./cert')
 
 const client = new Client({
-  host: process.env.DB_HOST,
-  database: process.env.DATABASE,
-  password: process.env.PASSWORD,
-  port: process.env.DB_PORT,
-  user: process.env.USERNAME,
+  host: "free-tier5.gcp-europe-west1.cockroachlabs.cloud",
+  database: "jaded-orca-1425.defaultdb",
+  password: "SP0sv1pRB_pb-ob0",
+  port: 26257,
+  user: "wane",
+  // host: "free-tier5.gcp-europe-west1.cockroachlabs.cloud",
+  // database: "soft-gopher-1424.defaultdb",
+  // password: "vUAktHji5sBXzAmB",
+  // port: "2657",
+  // user: "nwani",
   ssl: {
-    rejectUnauthorized: false,
+    rejectUnauthorized: true,
+    cert: process.env.DB_CERT
   },
 });
 
@@ -17,6 +27,7 @@ const headers = {
   "Access-Control-Allow-Headers": "Content-Type",
   "Content-Type": "application/json",
 };
+
 
 exports.handler = async ({ queryStringParameters }, context, callback) => {
   const { order } = queryStringParameters;
@@ -31,19 +42,20 @@ exports.handler = async ({ queryStringParameters }, context, callback) => {
 
     const { rows } = await client.query(sqlStatement);
 
+    await client.end();
+
     return {
       statusCode: 200,
       headers,
       body: JSON.stringify({ data: rows }),
     };
-  } catch (e) {
-    console.log(e);
+  } catch (error) {
     return {
-      statusCode: 505,
+      statusCode: 500,
       headers,
       body: JSON.stringify({
-        response: "An internal server error occurred",
-        e,
+        message: "An internal server error occurred",
+        error
       }),
     };
   }
